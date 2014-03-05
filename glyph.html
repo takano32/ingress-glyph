@@ -7,12 +7,15 @@
 		<meta http-equiv="Content-Language" content="ja" />
 		<meta http-equiv="Content-Style-Type" content="text/css" />
 		<meta http-equiv="Content-Script-Type" content="text/javascript" />
-		<title>Canvas</title>
+		<title>Ingress Glyph</title>
 		<!--[if IE]><script type="text/javascript" src="excanvas.js"></script><![endif]-->
 		<script type="text/javascript" src="./js/glyph.js"></script>
 	</head>
 	<body>
 		<h1>Ingress Glyph</h1>
+		<input id="glyph-name-input" onKeyUp="glyphNameInputOnKeyUp(this);" type="text" width="80"/><br/>
+		<input type="button" value="clear all" onClick="glyphNameButtonOnClick(this);" style="width: 80px;" value="clear all"/>
+		<input type="button" value="chaos" onClick="glyphNameButtonOnClick(this);" style="width: 80px;"/>
 		<div id="glyph-name"></div>
 		<canvas id="glyph-canvas" width="640" height="480"></canvas>
 	</body>

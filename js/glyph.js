@@ -3,6 +3,28 @@ var Position = function(x, y) {
 	this.y = y;
 };
 
+var Glyph = function(name, indexes) {
+	this.name = name;
+	this.indexes = indexes;
+};
+
+var glyphs = [
+	new Glyph('clear all', [1, 2, 3, 4, 5, 6, 1]),
+	new Glyph('chaos',     [3, 2, 1, 6, 10, 0, 8, 4]),
+];
+
+function glyphNameInputOnKeyUp(input) {
+	var glyphName = document.getElementById('glyph-name');
+	glyphName.innerHTML = input.value;
+}
+
+function glyphNameButtonOnClick(button) {
+	console.log(button);
+	drawClear();
+	drawPoints();
+	drawGlyphByName(button.value);
+}
+
 var positions = [];
 
 function initializePositions() {
@@ -50,12 +72,24 @@ function initializePositions() {
 
 initializePositions();
 
+
 onload = function() {
+	drawClear();
 	drawPoints();
-	// drawClearAllGlyph();
-	drawChaosGlyph();
-	// drawClear();
-};
+}
+
+
+function drawGlyphByName(name) {
+	var glyph = undefined;
+	for (var i in glyphs) {
+		g = glyphs[i];
+		if (g.name == name) {
+			glyph = g;
+			break;
+		}
+	}
+	drawGlyph(glyph);
+}
 
 function drawPoints() {
 	var canvas = document.getElementById('glyph-canvas');
@@ -67,7 +101,6 @@ function drawPoints() {
 	for (var index in positions) {
 		var r = 10;
 		var pos = positions[index];
-		console.log(pos);
 		ctx.beginPath();
 		ctx.arc(pos.x, pos.y, r, Math.PI*2, false);
 		ctx.stroke();
@@ -75,17 +108,8 @@ function drawPoints() {
 	}
 }
 
-function drawClearAllGlyph() {
-	var indexes = [1, 2, 3, 4, 5, 6, 1];
-	drawGlyph(indexes);
-}
-
-function drawChaosGlyph() {
-	var indexes = [3, 2, 1, 6, 10, 0, 8, 4];
-	drawGlyph(indexes);
-}
-
-function drawGlyph(indexes) {
+function drawGlyph(glyph) {
+	var indexes = glyph.indexes;
 	var pos = positions;
 	var canvas = document.getElementById('glyph-canvas');
 	if (!canvas || !canvas.getContext) {
