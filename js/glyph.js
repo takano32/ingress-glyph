@@ -16,7 +16,7 @@ var glyphs = [
 
 function glyphNameInputOnKeyUp(input) {
 	var glyphName = document.getElementById('glyph-name');
-	glyphName.innerHTML = input.value;
+	glyphName.innerHTML = input.value.toUpperCase();
 }
 
 function glyphNameButtonOnClick(button) {
