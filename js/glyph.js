@@ -20,7 +20,6 @@ function glyphNameInputOnKeyUp(input) {
 }
 
 function glyphNameButtonOnClick(button) {
-	console.log(button);
 	drawClear();
 	drawPoints();
 	drawGlyphByName(button.value);
@@ -84,7 +83,7 @@ function drawGlyphByName(name) {
 	var glyph = undefined;
 	for (var i in glyphs) {
 		g = glyphs[i];
-		if (g.name == name) {
+		if (g.name == name.toLowerCase()) {
 			glyph = g;
 			break;
 		}
