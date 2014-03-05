@@ -11,6 +11,7 @@ var Glyph = function(name, indexes) {
 var glyphs = [
 	new Glyph('clear all', [1, 2, 3, 4, 5, 6, 1]),
 	new Glyph('chaos',     [3, 2, 1, 6, 10, 0, 8, 4]),
+	new Glyph('journey',   [4, 3, 2, 7, 0, 10, 6]),
 ];
 
 function glyphNameInputOnKeyUp(input) {
