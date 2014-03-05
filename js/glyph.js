@@ -20,9 +20,14 @@ function glyphNameInputOnKeyUp(input) {
 }
 
 function glyphNameButtonOnClick(button) {
+	var glyphName = button.value;
 	drawClear();
 	drawPoints();
-	drawGlyphByName(button.value);
+	drawGlyphByName(glyphName);
+	var glyphNameInputElement = document.getElementById('glyph-name-input');
+	glyphNameInputElement.value = glyphName.toUpperCase();
+	var glyphNameElement = document.getElementById('glyph-name');
+	glyphNameElement.innerHTML = glyphName.toUpperCase();
 }
 
 var positions = [];
