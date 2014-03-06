@@ -9,14 +9,15 @@ var Glyph = function(name, indexes) {
 };
 
 var glyphs = [
-	new Glyph('clear all', [1, 2, 3, 4, 5, 6, 1]),
-	new Glyph('chaos',     [3, 2, 1, 6, 10, 0, 8, 4]),
-	new Glyph('journey',   [4, 3, 2, 7, 0, 10, 6]),
+	new Glyph('CLEAR ALL', [1, 2, 3, 4, 5, 6, 1]),
+	new Glyph('CHAOS',     [3, 2, 1, 6, 10, 0, 8, 4]),
+	new Glyph('JOURNEY',   [4, 3, 2, 7, 0, 10, 6]),
 ];
 
 function glyphNameInputOnKeyUp(input) {
-	var glyphName = document.getElementById('glyph-name');
-	glyphName.innerHTML = input.value.toUpperCase();
+	var glyphNameElement = document.getElementById('glyph-name');
+	var glyphName = input.value.toUpperCase();
+	glyphNameElement.innerHTML = glyphName;
 }
 
 function glyphNameButtonOnClick(button) {
@@ -25,9 +26,9 @@ function glyphNameButtonOnClick(button) {
 	drawPoints();
 	drawGlyphByName(glyphName);
 	var glyphNameInputElement = document.getElementById('glyph-name-input');
-	glyphNameInputElement.value = glyphName.toUpperCase();
+	glyphNameInputElement.value = glyphName;
 	var glyphNameElement = document.getElementById('glyph-name');
-	glyphNameElement.innerHTML = glyphName.toUpperCase();
+	glyphNameElement.innerHTML = glyphName;
 }
 
 var positions = [];
@@ -88,7 +89,7 @@ function drawGlyphByName(name) {
 	var glyph = undefined;
 	for (var i in glyphs) {
 		g = glyphs[i];
-		if (g.name == name.toLowerCase()) {
+		if (g.name == name) {
 			glyph = g;
 			break;
 		}
